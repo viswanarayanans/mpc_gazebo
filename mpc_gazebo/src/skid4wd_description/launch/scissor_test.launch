@@ -1,0 +1,23 @@
+<launch>
+    <!-- Default: Empty World -->
+    <!-- <arg name="world_name" default="$(find rotors_gazebo)/worlds/waypoint.world"/> -->
+    <!-- <arg name="world_name" default="worlds/empty.world"/> -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="/home/cerberus/washroom2.world"/>
+        <!-- <arg name="world_name" value="$(find skid4wd_description)/worlds/empty.world"/> -->
+        <arg name="paused" value="false"/>
+    </include>
+    <!-- <include file="$(find skid4wd_description)/launch/spawn.launch"/> -->
+
+   <!--  <param name="robot_description_sdf" textfile="/home/cerberus/model_editor_models/base_with_manipulator/model.sdf" />
+    <node
+        name="spawn_model"
+        pkg="gazebo_ros"
+        type="spawn_model"
+        args="-sdf -param robot_description_sdf -model artpark_bot -x 0 -y 0.0 -z 0.5"
+        output="screen">
+    </node>
+ -->
+    <include file="$(find skid4wd_description)/launch/spawn.launch" />
+
+</launch>

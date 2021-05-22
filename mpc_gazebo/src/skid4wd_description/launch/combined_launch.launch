@@ -1,0 +1,22 @@
+<launch>
+    <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find skid4wd_description)/models/skid4wd_mani"/>
+    <env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find skid4wd_description)/models/skid4wd_mani"/>
+    <!-- Default: Empty World -->
+    <!-- <arg name="world_name" default="$(find rotors_gazebo)/worlds/waypoint.world"/> -->
+    <!-- <arg name="world_name" default="worlds/empty.world"/> -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">     
+        <arg name="world_name" default="worlds/empty.world"/>
+        <!-- <arg name="world_name" value="/home/cerberus/washroom2.world"/> -->
+        <arg name="paused" value="true"/>
+        <arg name="verbose" value="true"/>
+    </include>
+
+
+    <!-- Load Scene -->
+    <!-- <include file="$(find skid4wd_description)/launch/load_scene.launch" /> -->
+
+    <!-- Spawn Robot Model -->
+    <include file="$(find skid4wd_description)/launch/spawn.launch" />
+    <!-- <include file="$(find skid4wd_description)/launch/spawn_robot_urdf.launch" /> -->
+
+</launch>

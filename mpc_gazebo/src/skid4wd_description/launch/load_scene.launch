@@ -1,0 +1,15 @@
+<launch>
+<!--     <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="paused" value="true"/>
+    </include>
+ -->
+    <param name="scene_description_sdf" textfile="/home/cerberus/model_editor_models/skid4wd/model.sdf" />
+
+    <node
+        name="spawn_model"
+        pkg="gazebo_ros"
+        type="spawn_model"
+        args="-sdf -param scene_description_sdf -model artpark_scene -x 0 -y 0.0 -z 0.5"
+        output="screen">
+    </node>
+</launch>

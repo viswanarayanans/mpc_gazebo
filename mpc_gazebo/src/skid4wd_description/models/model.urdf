@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<robot name='artpark'>
+  <link name='link_3'>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
+    </inertial>
+    <!-- <pose frame=''>1.43 0.575 0.2 0 -0 0</pose> -->
+    <visual>
+      <!-- <max_contacts>10</max_contacts> -->
+      <!-- <pose frame=''>0 0 0 0 -0 0</pose> -->
+      <geometry>
+        <box size="0.15 0.13 0.25" />
+      </geometry>
+    </visual>
+    <collision>
+      <!-- <max_contacts>10</max_contacts> -->
+      <!-- <pose frame=''>0 0 0 0 -0 0</pose> -->
+      <geometry>
+        <box size="0.15 0.13 0.25" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  
+  <link name='link_6_clone_clone_0'>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="0.145833" ixy="0" ixz="0" iyy="0.145833" iyz="0" izz="0.125" />
+    </inertial>
+    <!-- <pose frame=''>1.5 0.65 0.2 0 -0.785 0</pose> -->
+    <visual><!-- 
+      <laser_retro>0</laser_retro>
+      <max_contacts>10</max_contacts>
+      <pose frame=''>0 0 0 0 -0 0</pose> -->
+      <geometry>
+        <cylinder radius="0.01" length="0.2"/>
+      </geometry>
+    </visual>
+
+    <collision><!-- 
+      <laser_retro>0</laser_retro>
+      <max_contacts>10</max_contacts>
+      <pose frame=''>0 0 0 0 -0 0</pose> -->
+      <geometry>
+        <cylinder radius="0.01" length="0.2"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="link_3_JOINT_39" type="revolute">
+    <parent link="link_3"/>
+    <child link="link_6_clone_clone_0" />
+    <axis xyz="0 1 0"/>
+    <origin xyz="-0 -0.1 -0" rpy="0.0 0.0 0.0"/>
+    <limit
+      lower="-0.5"
+      upper="0.5"
+      effort="-1"
+      velocity="-1" />
+  </joint>
+
+
+
+  <link name='link_6_clone_clone_0_clone'>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="0.145833" ixy="0" ixz="0" iyy="0.145833" iyz="0" izz="0.125" />
+    </inertial>
+    <!-- <pose frame=''>1.5 0.67 0.2 0 0.785 0</pose> -->
+    <visual>
+      <laser_retro>0</laser_retro>
+      <max_contacts>10</max_contacts>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <geometry>
+        <cylinder radius="0.01" length="0.2"/>
+      </geometry>
+    </visual>
+    <collision><!-- 
+      <laser_retro>0</laser_retro>
+      <max_contacts>10</max_contacts>
+      <pose frame=''>0 0 0 0 -0 0</pose> -->
+      <geometry>
+        <cylinder radius="0.01" length="0.2"/>
+      </geometry>
+    </collision>
+  </link>
+
+ <joint name="link_3_JOINT_38" type="revolute">
+    <parent link="link_3"/>
+    <child link="link_6_clone_clone_0_clone"/>
+    <axis xyz="0 1 0"/>
+    <origin xyz="-0 0.1 -0" rpy="0.0 0.0 0.0"/>
+    <limit
+      lower="-0.5"
+      upper="0.5"
+      effort="-1"
+      velocity="-1"/>
+  </joint>
+
+
+  <transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="link_3_JOINT_38">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="link_3_JOINT_39">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/artpark</robotNamespace>
+    </plugin>
+  </gazebo>
+</robot>

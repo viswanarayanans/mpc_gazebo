@@ -1,0 +1,131 @@
+<model name='artpark'>
+
+  <link name='link_3'>
+    <inertial>
+      <mass>1</mass>
+      <inertia>
+        <ixx>0.166667</ixx>
+        <ixy>0</ixy>
+        <ixz>0</ixz>
+        <iyy>0.166667</iyy>
+        <iyz>0</iyz>
+        <izz>0.166667</izz>
+      </inertia>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+    </inertial>
+    <pose frame=''>1.43 0.575 0.2 0 -0 0</pose>
+    <collision name='collision'>
+      <laser_retro>0</laser_retro>
+      <max_contacts>10</max_contacts>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <geometry>
+        <box>
+          <size>0.15 0.13 0.25</size>
+        </box>
+      </geometry>
+    </collision>
+  </link><!-- 
+  <link name='link_6_clone_clone_0'>
+    <inertial>
+      <mass>1</mass>
+      <inertia>
+        <ixx>0.145833</ixx>
+        <ixy>0</ixy>
+        <ixz>0</ixz>
+        <iyy>0.145833</iyy>
+        <iyz>0</iyz>
+        <izz>0.125</izz>
+      </inertia>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+    </inertial>
+    <pose frame=''>1.5 0.65 0.2 0 -0.785 0</pose>
+    <collision name='collision'>
+      <laser_retro>0</laser_retro>
+      <max_contacts>10</max_contacts>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <geometry>
+        <cylinder>
+          <radius>0.01</radius>
+          <length>0.2</length>
+        </cylinder>
+      </geometry>
+    </collision>
+  </link>
+  <link name='link_6_clone_clone_0_clone'>
+    <inertial>
+      <mass>1</mass>
+      <inertia>
+        <ixx>0.145833</ixx>
+        <ixy>0</ixy>
+        <ixz>0</ixz>
+        <iyy>0.145833</iyy>
+        <iyz>0</iyz>
+        <izz>0.125</izz>
+      </inertia>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+    </inertial>
+    <pose frame=''>1.5 0.67 0.2 0 0.785 0</pose>
+    <gravity>1</gravity>
+    <collision name='collision'>
+      <laser_retro>0</laser_retro>
+      <max_contacts>10</max_contacts>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <geometry>
+        <cylinder>
+          <radius>0.01</radius>
+          <length>0.2</length>
+        </cylinder>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name='link_3_JOINT_38' type='revolute'>
+    <parent>link="link_3"</parent>
+    <child>link="link_6_clone_clone_0"</child>
+    <origin        
+      xyz="-0 -1 -0"/>
+    <limit
+      lower="-0.5"
+      upper="0.5"
+      effort="-1"
+      velocity="-1"/>
+  </joint>
+  <joint name='link_3_JOINT_39' type='revolute'>
+    <parent link="link_3"/>
+    <child link="link_6_clone_clone_0_clone" />
+    <origin
+      xyz="-0 -1 -0"/>
+    <limit
+      lower="-0.5"
+      upper="0.5"
+      effort="-1"
+      velocity="-1" />
+  </joint>
+ -->
+  <!-- <transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="link_3_JOINT_38">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="link_3_JOINT_39">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission> -->
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/artpark</robotNamespace>
+    </plugin>
+  </gazebo>
+</model>
